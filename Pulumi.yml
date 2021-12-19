@@ -1,0 +1,3 @@
+﻿name: SampleProvisionAppConfiguration
+description: A sample reproducing the issue with Azure AppConfiguration\
+runtime: dotnet

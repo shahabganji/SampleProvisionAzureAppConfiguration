@@ -1,0 +1,3 @@
+﻿config:
+  azure-native:location: westeurope
+  azure:location: westeurope
