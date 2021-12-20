@@ -16,22 +16,14 @@ namespace SampleProvisionAzureAppConfiguration
                 Sku = "standard"
             });
 
-            _ = new ConfigurationFeature("MyFeatureFlag", new ConfigurationFeatureArgs
-            {
-                Name = "MyFeatureFlag",
-                ConfigurationStoreId = appConfig.Id,
-                Enabled = false,
-            });
-
             _ = new Pulumi.AzureNative.AppConfiguration.KeyValue("AnotherFeatureFlag",
                 new Pulumi.AzureNative.AppConfiguration.KeyValueArgs
                 {
                     ResourceGroupName = resourceGroup.Name,
                     ConfigStoreName = appConfig.Name,
-                    KeyValueName = "AnotherFeatureFlag",
-                    // KeyValueName = ".appconfig.featureflag/AnotherFeatureFlag",
+                    KeyValueName = ".appconfig.featureflag~2FAnotherFeatureFlag",
                     ContentType = "application/vnd.microsoft.appconfig.ff+json;charset=utf-8",
-                    Value = "false",
+                    Value = @"{""id"": ""AnotherFeatureFlag"",""description"": """",""enabled"": true,""conditions"": {""client_filters"": []}}"
                 });
         }
     }
